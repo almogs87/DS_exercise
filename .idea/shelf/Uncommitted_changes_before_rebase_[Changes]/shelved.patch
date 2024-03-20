@@ -1,0 +1,90 @@
+Index: CoinFlip_permutations.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import numpy as np\r\n\r\n\r\ndef tossing_perm_contest(toss_times, print_res=False):\r\n# generating coin tossing results 0 stands for Head, 1 stand for Tails\r\n    tossing_results = np.random.randint(0,2,toss_times)\r\n    alice = 0\r\n    bob = 0\r\n\r\n    #Points loop\r\n    # HH sequence or 00 will grant alice a point\r\n    # HT sequence of 01 will grand bob a point\r\n\r\n    for k in range(1,toss_times,1):\r\n        if tossing_results[k - 1] == 0:\r\n            if tossing_results[k] == 0:\r\n                alice += 1\r\n            else:\r\n                bob += 1\r\n    if print_res is True:\r\n        msg_bob = \"bob received {} points\".format(bob)\r\n        msg_alice = \"alice received {} points\".format(alice)\r\n        print(tossing_results)\r\n        print(msg_bob)\r\n        print(msg_alice)\r\n\r\n    return alice,bob\r\n\r\ndraw = 0\r\nwinner_bob = 0\r\nwinner_alice = 0\r\niter = 10000\r\n\r\ntoss_times = 100\r\n\r\nfor k in range(iter):\r\n    alice,bob=tossing_perm_contest(toss_times)\r\n    if bob == alice:\r\n        draw = 1\r\n    elif bob > alice:\r\n        winner_bob += 1\r\n    else:\r\n        winner_alice += 1\r\n\r\nwinner_bob = round(100*winner_bob/iter,2)\r\nwinner_alice = round(100*winner_alice/iter,2)\r\n\r\nmsg_bob = \"bob won {} time\".format(winner_bob)\r\nmsg_alice = \"alice won {} time\".format(winner_alice)\r\nprint(msg_bob)\r\nprint(msg_alice)
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/CoinFlip_permutations.py b/CoinFlip_permutations.py
+--- a/CoinFlip_permutations.py	(revision 61790003dbb3378606ad221b8769eec477262046)
++++ b/CoinFlip_permutations.py	(date 1710940956811)
+@@ -29,7 +29,7 @@
+ draw = 0
+ winner_bob = 0
+ winner_alice = 0
+-iter = 10000
++iter = 100000
+ 
+ toss_times = 100
+ 
+@@ -45,7 +45,7 @@
+ winner_bob = round(100*winner_bob/iter,2)
+ winner_alice = round(100*winner_alice/iter,2)
+ 
+-msg_bob = "bob won {} time".format(winner_bob)
+-msg_alice = "alice won {} time".format(winner_alice)
++msg_bob = "bob won {}% of contests".format(winner_bob)
++msg_alice = "alice won {}% contests".format(winner_alice)
+ print(msg_bob)
+ print(msg_alice)
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"d7eefc02-654d-4a39-aff5-221e01b606a8\" name=\"Changes\" comment=\"\">\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/DataScience.iml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/misc.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/modules.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/vcs.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/CoinFlip_permutations.py\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Python Script\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\"><![CDATA[{\r\n  \"associatedIndex\": 5\r\n}]]></component>\r\n  <component name=\"ProjectId\" id=\"2dx2hauoZ0WUVheXqDXkiZlY0bI\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"Python.CoinFlip_permutations.executor\": \"Run\",\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"git-widget-placeholder\": \"main\"\r\n  }\r\n}]]></component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-python-sdk-67fca87a943a-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.11799.259\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"d7eefc02-654d-4a39-aff5-221e01b606a8\" name=\"Changes\" comment=\"\" />\r\n      <created>1710935528982</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1710935528982</updated>\r\n    </task>\r\n    <servers />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 61790003dbb3378606ad221b8769eec477262046)
++++ b/.idea/workspace.xml	(date 1710940931608)
+@@ -4,16 +4,7 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="d7eefc02-654d-4a39-aff5-221e01b606a8" name="Changes" comment="">
+-      <change afterPath="$PROJECT_DIR$/.idea/DataScience.iml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/CoinFlip_permutations.py" afterDir="false" />
+-    </list>
++    <list default="true" id="d7eefc02-654d-4a39-aff5-221e01b606a8" name="Changes" comment="Alice-Bob coin flip" />
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -62,6 +53,30 @@
+       <option name="presentableId" value="Default" />
+       <updated>1710935528982</updated>
+     </task>
++    <task id="LOCAL-00001" summary="Alice-Bob coin flip">
++      <option name="closed" value="true" />
++      <created>1710940450265</created>
++      <option name="number" value="00001" />
++      <option name="presentableId" value="LOCAL-00001" />
++      <option name="project" value="LOCAL" />
++      <updated>1710940450265</updated>
++    </task>
++    <option name="localTasksCounter" value="2" />
+     <servers />
+   </component>
++  <component name="Vcs.Log.Tabs.Properties">
++    <option name="TAB_STATES">
++      <map>
++        <entry key="MAIN">
++          <value>
++            <State />
++          </value>
++        </entry>
++      </map>
++    </option>
++  </component>
++  <component name="VcsManagerConfiguration">
++    <MESSAGE value="Alice-Bob coin flip" />
++    <option name="LAST_COMMIT_MESSAGE" value="Alice-Bob coin flip" />
++  </component>
+ </project>
+\ No newline at end of file

@@ -29,7 +29,7 @@ def tossing_perm_contest(toss_times, print_res=False):
 draw = 0
 winner_bob = 0
 winner_alice = 0
-iter = 10000
+iter = 100000
 
 toss_times = 100
 
@@ -45,7 +45,7 @@ for k in range(iter):
 winner_bob = round(100*winner_bob/iter,2)
 winner_alice = round(100*winner_alice/iter,2)
 
-msg_bob = "bob won {} time".format(winner_bob)
-msg_alice = "alice won {} time".format(winner_alice)
+msg_bob = "bob won {}% of contests".format(winner_bob)
+msg_alice = "alice won {}% contests".format(winner_alice)
 print(msg_bob)
 print(msg_alice)
